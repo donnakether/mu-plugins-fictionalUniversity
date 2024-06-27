@@ -5,6 +5,8 @@ function university_post_types() {
 
   // Campus Post Type
   register_post_type('campus', array(
+    'capability_type' => 'campus',
+    'map_meta_cap' => true,
     'supports' => array('title','editor','excerpt'),
     'rewrite' => array('slug' => 'campuses'),
     'public' => true,
@@ -22,6 +24,8 @@ function university_post_types() {
 
   // Events Post Type
     register_post_type('event', array(
+        'capability_type' => 'event',
+        'map_meta_cap' => true,
         'supports' => array('title','editor','excerpt'),
         'rewrite' => array('slug' => 'events'),
         'public' => true,
@@ -39,7 +43,7 @@ function university_post_types() {
 
     // Program Post Type
     register_post_type('program', array(
-      'supports' => array('title','editor'),
+      'supports' => array('title'),
       'rewrite' => array('slug' => 'programs'),
       'public' => true,
       'show_in_rest' => true,
@@ -67,6 +71,24 @@ function university_post_types() {
         'singular_name' => 'Professor'
       ),
       'menu_icon' => 'dashicons-welcome-learn-more'
+    ));
+
+    //Note Post Type
+    register_post_type('note', array(
+      'capability_type' => 'note',
+      'map_meta_cap' => true,
+      'supports' => array('title','editor'),
+      'public' => false,
+      'show_ui' => true,
+      'show_in_rest' => true,
+      'labels' => array(
+        'name' => 'Note',
+        'add_new_item' => 'Add New Note',
+        'edit_item' => 'Edit Note',
+        'all_items' => 'All Notes',
+        'singular_name' => 'Note'
+      ),
+      'menu_icon' => 'dashicons-welcome-write-blog'
     ));
 
 }
